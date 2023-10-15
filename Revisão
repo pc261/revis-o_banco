@@ -1,0 +1,35 @@
+CREATE DATABASE tb_4bim_makima_nome_certo_que_eu_tinha_esquecido_Felipe_lira;
+USE tb_4bim_makima_nome_certo_que_eu_tinha_esquecido_Felipe_lira;
+
+-- 1
+
+-- A)
+CREATE TABLE nomes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255)
+);
+INSERT INTO nomes (nome) VALUES
+    ('Roberta'),
+    ('Roberto'),
+    ('Maria Clara'),
+    ('João')
+;
+
+-- B)
+SELECT nome, UPPER(nome) AS transformado_em_maiusculo FROM nomes;
+
+-- C)
+SELECT nome, LENGTH(nome) AS tamanho_nome FROM nomes;
+
+-- D)
+-- Selecionar nomes com tratamento adequado
+SELECT 
+    CASE 
+        WHEN nome LIKE '%Roberto%' OR nome LIKE '%João%' THEN CONCAT('Sr. ', nome)
+        WHEN nome LIKE '%Roberta%' OR nome LIKE '%Maria Clara%' THEN CONCAT('Sra. ', nome)
+        ELSE nome
+    END AS nome_com_tratamento
+FROM nomes;
+
+
+
