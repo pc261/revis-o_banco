@@ -87,6 +87,29 @@ FROM eventos;
 SELECT DAYNAME(data_evento) AS nome_dia_semana
 FROM eventos;
 
+-- 4
+
+-- A)
+INSERT INTO produtos(produto, preco, quantidade) VALUES
+('Gás', '180.00', 10),
+('Gazua', '30.99', 0),
+('Doce de Murango', '12.50', 12);
+
+SELECT produto, preco, quantidade,
+       IF(quantidade > 0, 'Em estoque', 'Fora de estoque') AS status_estoque
+FROM produtos;
+
+-- B)
+SELECT produto, preco, quantidade,
+    CASE
+        WHEN preco <= 3.00 THEN 'Barato'
+        WHEN preco <= 6.00 THEN 'Médio'
+        ELSE 'Caro'
+    END AS categoria_preco
+FROM produtos;
+
+
+
 
 
 
